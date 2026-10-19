@@ -75,14 +75,7 @@ await Promise.all(
           },
         };
 
-        if (target === 'chrome') {
-          manifest.optional_host_permissions = optionalHostPermissions;
-
-          manifest.background = {
-            service_worker: 'js/background.js',
-            type: 'module',
-          };
-        } else {
+        if (target === 'firefox') {
           manifest.optional_permissions = optionalHostPermissions;
 
           manifest.background = {
@@ -97,6 +90,16 @@ await Promise.all(
                 required: ['websiteContent'],
               },
             },
+          };
+        } else {
+          // Chrome and Microsoft Edge are both Chromium-based, so they share the same manifest setup.
+          // Edge supports Manifest V3 with a service worker background and optional host permissions,
+          // and the API namespaces used by the source code (chrome.*/browser.*) are available in both.
+          manifest.optional_host_permissions = optionalHostPermissions;
+
+          manifest.background = {
+            service_worker: 'js/background.js',
+            type: 'module',
           };
         }
 

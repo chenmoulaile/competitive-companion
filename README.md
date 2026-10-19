@@ -2,6 +2,7 @@
 
 [link-cws]: https://chromewebstore.google.com/detail/competitive-companion/cjnmckjndlpiamhfimnnjmnckgghkjbl
 [link-amo]: https://addons.mozilla.org/en-US/firefox/addon/competitive-companion/
+[link-edge]: https://github.com/chenmoulaile/competitive-companion/releases/latest
 
 [![Build Status](https://github.com/jmerle/competitive-companion/workflows/Build/badge.svg)](https://github.com/jmerle/competitive-companion/actions/workflows/build.yml)  
 [![Chrome Web Store Version](https://img.shields.io/chrome-web-store/v/cjnmckjndlpiamhfimnnjmnckgghkjbl.svg)][link-cws]
@@ -16,6 +17,9 @@ A browser extension which parses competitive programming problems from various o
 ## Install
 - [**Chrome** extension][link-cws] [<img valign="middle" src="https://img.shields.io/chrome-web-store/v/cjnmckjndlpiamhfimnnjmnckgghkjbl.svg?label=%20">][link-cws]
 - [**Firefox** add-on][link-amo] [<img valign="middle" src="https://img.shields.io/amo/v/competitive-companion.svg?label=%20">][link-amo]
+- **Microsoft Edge**: download the `competitive-companion-*-edge.zip` asset from the [latest GitHub release][link-edge], unzip it, then open `edge://extensions` in Edge, enable **Developer mode** (bottom-left) and click **Load unpacked** to select the unzipped folder.
+
+> Edge is Chromium-based, so the extension works out of the box. A dedicated Edge build is produced by `pnpm package:edge` and published as a GitHub release asset. The Chrome Web Store, Microsoft Edge Add-ons store and Firefox Add-ons store listings of the upstream project are unaffected by this fork.
 
 ## Tools that use Competitive Companion
 - [acmX](https://marketplace.visualstudio.com/items?itemName=marx24.acmx)
@@ -261,6 +265,9 @@ pnpm build:chrome
 # Build the Firefox code to the build-firefox/ directory
 pnpm build:firefox
 
+# Build the Microsoft Edge code to the build-edge/ directory
+pnpm build:edge
+
 # Lint the extension for possible mistakes
 pnpm lint
 
@@ -275,6 +282,9 @@ pnpm dev:chrome
 # Automatically re-compiles the code when the source changes
 # Automatically reloads the extension in the Firefox instance when the code is re-compiled
 pnpm dev:firefox
+
+# Launch Microsoft Edge with Competitive Companion loaded as an unpacked extension
+pnpm dev:edge
 ```
 
 ## Testing
